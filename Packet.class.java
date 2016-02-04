@@ -46,26 +46,20 @@ public class Packet {
         return this.a2;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public Packet addTo(Packet queue) {
         Packet packet;
         this.link_$eq(null);
         if (queue == null) {
             packet = this;
-            return packet;
-        }
-        Packet next = queue;
-        do {
-            if (next.link() == null) {
-                next.link_$eq(this);
-                packet = queue;
-                return packet;
+        } else {
+            Packet next = queue;
+            while (next.link() != null) {
+                next = next.link();
             }
-            next = next.link();
-        } while (true);
+            next.link_$eq(this);
+            packet = queue;
+        }
+        return packet;
     }
 
     public Packet(Packet link, int id, int kind) {

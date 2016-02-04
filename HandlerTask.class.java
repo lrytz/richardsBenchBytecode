@@ -29,10 +29,6 @@ extends Task {
         this.v2 = x$1;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     @Override
     public TaskControlBlock run(Packet packet) {
         if (packet != null) {
@@ -42,21 +38,23 @@ extends Task {
                 this.v2_$eq(packet.addTo(this.v2()));
             }
         }
-        if (this.v1() == null) return this.scheduler.suspendCurrent();
-        int count = this.v1().a1();
-        if (count < 4) {
-            if (this.v2() == null) {
-                return this.scheduler.suspendCurrent();
+        if (this.v1() != null) {
+            int count = this.v1().a1();
+            if (count < 4) {
+                if (this.v2() != null) {
+                    Packet v = this.v2();
+                    this.v2_$eq(this.v2().link());
+                    v.a1_$eq(this.v1().a2()[count]);
+                    this.v1().a1_$eq(count + 1);
+                    return this.scheduler.queue(v);
+                }
+            } else {
+                Packet v = this.v1();
+                this.v1_$eq(this.v1().link());
+                return this.scheduler.queue(v);
             }
-            Packet v = this.v2();
-            this.v2_$eq(this.v2().link());
-            v.a1_$eq(this.v1().a2()[count]);
-            this.v1().a1_$eq(count + 1);
-            return this.scheduler.queue(v);
         }
-        Packet v = this.v1();
-        this.v1_$eq(this.v1().link());
-        return this.scheduler.queue(v);
+        return this.scheduler.suspendCurrent();
     }
 
     public HandlerTask(Scheduler scheduler) {

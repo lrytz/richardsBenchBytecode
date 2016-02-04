@@ -80,7 +80,7 @@ public class TaskControlBlock {
 
     public TaskControlBlock run() {
         Packet packet;
-        Packet packet2 = packet = this.state() == 3 ? this.queue() : null;
+        Packet packet2 = this.state() == 3 ? this.queue() : (packet = null);
         if (packet != null) {
             this.queue_$eq(packet.link());
             this.state_$eq(this.queue() == null ? 0 : 1);

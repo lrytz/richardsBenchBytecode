@@ -96,7 +96,6 @@ public class Scheduler {
             this.currentId_$eq(this.currentTcb().id());
             this.currentTcb_$eq(this.currentTcb().run());
         }
-        return;
     }
 
     public TaskControlBlock release(int id) {
