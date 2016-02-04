@@ -172,14 +172,16 @@ public class TaskControlBlock {
     IAND
     ICONST_0
     IF_ICMPNE L1
+    GOTO L2
    L2
     LINENUMBER 224 L2
+   FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL TaskControlBlock.state ()I
     ICONST_2
-    IF_ICMPNE L3
+    IF_ICMPEQ L1
+    GOTO L3
    L1
-    LINENUMBER 223 L1
    FRAME SAME
     ICONST_1
     GOTO L4
@@ -233,52 +235,63 @@ public class TaskControlBlock {
     ALOAD 0
     INVOKEVIRTUAL TaskControlBlock.state ()I
     ICONST_3
-    IF_ICMPNE L1
-    ALOAD 0
-    INVOKEVIRTUAL TaskControlBlock.queue ()LPacket;
+    IF_ICMPEQ L1
     GOTO L2
    L1
    FRAME SAME
-    ACONST_NULL
+    ALOAD 0
+    INVOKEVIRTUAL TaskControlBlock.queue ()LPacket;
+    GOTO L3
    L2
+   FRAME SAME
+    ACONST_NULL
+    POP
+    ACONST_NULL
+   L3
    FRAME SAME1 Packet
     ASTORE 1
-   L3
-    LINENUMBER 238 L3
+   L4
+    LINENUMBER 238 L4
     ALOAD 1
-    IFNULL L4
-   L5
-    LINENUMBER 239 L5
+    IFNULL L5
+    GOTO L6
+   L6
+    LINENUMBER 239 L6
+   FRAME APPEND [Packet]
     ALOAD 0
     ALOAD 1
     INVOKEVIRTUAL Packet.link ()LPacket;
     INVOKEVIRTUAL TaskControlBlock.queue_$eq (LPacket;)V
-   L6
-    LINENUMBER 240 L6
+   L7
+    LINENUMBER 240 L7
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL TaskControlBlock.queue ()LPacket;
-    IFNONNULL L7
-    ICONST_0
-    GOTO L8
-   L7
-   FRAME FULL [TaskControlBlock Packet] [TaskControlBlock]
-    ICONST_1
+    IFNULL L8
+    GOTO L9
    L8
+   FRAME SAME1 TaskControlBlock
+    ICONST_0
+    GOTO L10
+   L9
+   FRAME SAME1 TaskControlBlock
+    ICONST_1
+   L10
    FRAME FULL [TaskControlBlock Packet] [TaskControlBlock I]
     INVOKEVIRTUAL TaskControlBlock.state_$eq (I)V
-   L4
-    LINENUMBER 242 L4
+    GOTO L5
+   L5
+    LINENUMBER 242 L5
    FRAME SAME
     ALOAD 0
     GETFIELD TaskControlBlock.task : LTask;
     ALOAD 1
     INVOKEVIRTUAL Task.run (LPacket;)LTaskControlBlock;
-   L9
+   L11
     ARETURN
-   L10
-    LOCALVARIABLE this LTaskControlBlock; L0 L10 0
-    LOCALVARIABLE packet LPacket; L3 L9 1
+   L12
+    LOCALVARIABLE packet LPacket; L3 L11 1
+    LOCALVARIABLE this LTaskControlBlock; L0 L12 0
     MAXSTACK = 2
     MAXLOCALS = 2
 
@@ -288,9 +301,11 @@ public class TaskControlBlock {
     LINENUMBER 251 L0
     ALOAD 0
     INVOKEVIRTUAL TaskControlBlock.queue ()LPacket;
-    IFNONNULL L1
-   L2
-    LINENUMBER 252 L2
+    IFNULL L1
+    GOTO L2
+   L1
+    LINENUMBER 252 L1
+   FRAME SAME
     ALOAD 0
     ALOAD 2
     INVOKEVIRTUAL TaskControlBlock.queue_$eq (LPacket;)V
@@ -304,16 +319,21 @@ public class TaskControlBlock {
     INVOKEVIRTUAL TaskControlBlock.priority ()I
     ALOAD 1
     INVOKEVIRTUAL TaskControlBlock.priority ()I
-    IF_ICMPLE L5
-    ALOAD 0
+    IF_ICMPGT L5
     GOTO L6
    L5
-    LINENUMBER 255 L5
+   FRAME SAME
+    ALOAD 0
+    GOTO L7
+   L6
+    LINENUMBER 255 L6
    FRAME SAME
     ALOAD 1
-    GOTO L6
-   L1
-    LINENUMBER 257 L1
+   L7
+   FRAME SAME1 TaskControlBlock
+    GOTO L8
+   L2
+    LINENUMBER 257 L2
    FRAME SAME
     ALOAD 0
     ALOAD 2
@@ -321,17 +341,16 @@ public class TaskControlBlock {
     INVOKEVIRTUAL TaskControlBlock.queue ()LPacket;
     INVOKEVIRTUAL Packet.addTo (LPacket;)LPacket;
     INVOKEVIRTUAL TaskControlBlock.queue_$eq (LPacket;)V
-   L7
-    LINENUMBER 258 L7
+   L9
+    LINENUMBER 258 L9
     ALOAD 1
-   L6
-    LINENUMBER 251 L6
+   L8
    FRAME SAME1 TaskControlBlock
     ARETURN
-   L8
-    LOCALVARIABLE this LTaskControlBlock; L0 L8 0
-    LOCALVARIABLE task LTaskControlBlock; L0 L8 1
-    LOCALVARIABLE packet LPacket; L0 L8 2
+   L10
+    LOCALVARIABLE this LTaskControlBlock; L0 L10 0
+    LOCALVARIABLE task LTaskControlBlock; L0 L10 1
+    LOCALVARIABLE packet LPacket; L0 L10 2
     MAXSTACK = 3
     MAXLOCALS = 3
 
@@ -409,23 +428,28 @@ public class TaskControlBlock {
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL TaskControlBlock.queue ()LPacket;
-    IFNONNULL L3
-    ICONST_2
+    IFNULL L3
     GOTO L4
    L3
    FRAME FULL [TaskControlBlock TaskControlBlock I I Packet Task] [TaskControlBlock]
-    ICONST_3
+    ICONST_2
+    GOTO L5
    L4
+   FRAME SAME1 TaskControlBlock
+    ICONST_3
+   L5
    FRAME FULL [TaskControlBlock TaskControlBlock I I Packet Task] [TaskControlBlock I]
     PUTFIELD TaskControlBlock.state : I
+   L6
+    LINENUMBER 206 L6
     RETURN
-   L5
-    LOCALVARIABLE this LTaskControlBlock; L0 L5 0
-    LOCALVARIABLE link LTaskControlBlock; L0 L5 1
-    LOCALVARIABLE id I L0 L5 2
-    LOCALVARIABLE priority I L0 L5 3
-    LOCALVARIABLE queue LPacket; L0 L5 4
-    LOCALVARIABLE task LTask; L0 L5 5
+   L7
+    LOCALVARIABLE this LTaskControlBlock; L0 L7 0
+    LOCALVARIABLE link LTaskControlBlock; L0 L7 1
+    LOCALVARIABLE id I L0 L7 2
+    LOCALVARIABLE priority I L0 L7 3
+    LOCALVARIABLE queue LPacket; L0 L7 4
+    LOCALVARIABLE task LTask; L0 L7 5
     MAXSTACK = 2
     MAXLOCALS = 6
 }

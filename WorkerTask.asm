@@ -78,28 +78,32 @@ public class WorkerTask extends Task  {
    L0
     LINENUMBER 332 L0
     ALOAD 1
-    IFNONNULL L1
-   L2
-    LINENUMBER 333 L2
+    IFNULL L1
+    GOTO L2
+   L1
+    LINENUMBER 333 L1
+   FRAME SAME
     ALOAD 0
     GETFIELD WorkerTask.scheduler : LScheduler;
     INVOKEVIRTUAL Scheduler.suspendCurrent ()LTaskControlBlock;
     GOTO L3
-   L1
-    LINENUMBER 335 L1
+   L2
+    LINENUMBER 335 L2
    FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL WorkerTask.v1 ()I
     ICONST_2
-    IF_ICMPNE L4
-   L5
-    LINENUMBER 336 L5
+    IF_ICMPEQ L4
+    GOTO L5
+   L4
+    LINENUMBER 336 L4
+   FRAME SAME
     ALOAD 0
     ICONST_3
     INVOKEVIRTUAL WorkerTask.v1_$eq (I)V
     GOTO L6
-   L4
-    LINENUMBER 338 L4
+   L5
+    LINENUMBER 338 L5
    FRAME SAME
     ALOAD 0
     ICONST_2
@@ -116,9 +120,9 @@ public class WorkerTask extends Task  {
     ALOAD 1
     ICONST_0
     INVOKEVIRTUAL Packet.a1_$eq (I)V
-    GETSTATIC scala/runtime/RichInt$.MODULE$ : Lscala/runtime/RichInt$;
    L8
     LINENUMBER 342 L8
+    GETSTATIC scala/runtime/RichInt$.MODULE$ : Lscala/runtime/RichInt$;
     GETSTATIC scala/Predef$.MODULE$ : Lscala/Predef$;
     ICONST_0
     INVOKEVIRTUAL scala/Predef$.intWrapper (I)I
@@ -137,7 +141,6 @@ public class WorkerTask extends Task  {
     ALOAD 1
     INVOKEVIRTUAL Scheduler.queue (LPacket;)LTaskControlBlock;
    L3
-    LINENUMBER 332 L3
    FRAME SAME1 TaskControlBlock
     ARETURN
    L10

@@ -340,43 +340,50 @@ public class Scheduler {
    FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
-    IFNONNULL L2
+    IFNULL L2
+    GOTO L3
    L3
-    LINENUMBER 117 L3
-    RETURN
-   L2
-    LINENUMBER 120 L2
+    LINENUMBER 120 L3
    FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
     INVOKEVIRTUAL TaskControlBlock.isHeldOrSuspended ()Z
-    IFEQ L4
-   L5
-    LINENUMBER 121 L5
+    IFNE L4
+    GOTO L5
+   L4
+    LINENUMBER 121 L4
+   FRAME SAME
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
     INVOKEVIRTUAL TaskControlBlock.link ()LTaskControlBlock;
     INVOKEVIRTUAL Scheduler.currentTcb_$eq (LTaskControlBlock;)V
-    GOTO L1
-   L4
-    LINENUMBER 123 L4
+    GOTO L6
+   L5
+    LINENUMBER 123 L5
    FRAME SAME
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
     INVOKEVIRTUAL TaskControlBlock.id ()I
     INVOKEVIRTUAL Scheduler.currentId_$eq (I)V
-   L6
-    LINENUMBER 124 L6
+   L7
+    LINENUMBER 124 L7
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
     INVOKEVIRTUAL TaskControlBlock.run ()LTaskControlBlock;
     INVOKEVIRTUAL Scheduler.currentTcb_$eq (LTaskControlBlock;)V
+   L6
+    LINENUMBER 120 L6
+   FRAME SAME
     GOTO L1
-   L7
-    LOCALVARIABLE this LScheduler; L0 L7 0
+   L2
+    LINENUMBER 119 L2
+   FRAME SAME
+    RETURN
+   L8
+    LOCALVARIABLE this LScheduler; L0 L8 0
     MAXSTACK = 2
     MAXLOCALS = 1
 
@@ -388,41 +395,47 @@ public class Scheduler {
     INVOKEVIRTUAL Scheduler.blocks ()[LTaskControlBlock;
     ILOAD 1
     AALOAD
-    ASTORE 2
    L1
-    LINENUMBER 132 L1
-    ALOAD 2
-    IFNONNULL L2
-    ALOAD 2
-    GOTO L3
+    ASTORE 2
    L2
-    LINENUMBER 134 L2
+    LINENUMBER 132 L2
+    ALOAD 2
+    IFNULL L3
+    GOTO L4
+   L3
    FRAME APPEND [TaskControlBlock]
     ALOAD 2
-    INVOKEVIRTUAL TaskControlBlock.markAsNotHeld ()V
+    GOTO L5
    L4
-    LINENUMBER 135 L4
+    LINENUMBER 134 L4
+   FRAME SAME
+    ALOAD 2
+    INVOKEVIRTUAL TaskControlBlock.markAsNotHeld ()V
+   L6
+    LINENUMBER 135 L6
     ALOAD 2
     INVOKEVIRTUAL TaskControlBlock.priority ()I
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
     INVOKEVIRTUAL TaskControlBlock.priority ()I
-    IF_ICMPLE L5
+    IF_ICMPGT L7
+    GOTO L8
+   L7
+   FRAME SAME
     ALOAD 2
-    GOTO L3
-   L5
-    LINENUMBER 136 L5
+    GOTO L5
+   L8
+    LINENUMBER 136 L8
    FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
-   L3
-    LINENUMBER 130 L3
+   L5
    FRAME SAME1 TaskControlBlock
     ARETURN
-   L6
-    LOCALVARIABLE this LScheduler; L0 L6 0
-    LOCALVARIABLE id I L0 L6 1
-    LOCALVARIABLE tcb LTaskControlBlock; L1 L6 2
+   L9
+    LOCALVARIABLE tcb LTaskControlBlock; L1 L5 2
+    LOCALVARIABLE this LScheduler; L0 L9 0
+    LOCALVARIABLE id I L0 L9 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -478,48 +491,53 @@ public class Scheduler {
     ALOAD 1
     INVOKEVIRTUAL Packet.id ()I
     AALOAD
-    ASTORE 2
    L1
-    LINENUMBER 168 L1
-    ALOAD 2
-    IFNONNULL L2
-    ALOAD 2
-    GOTO L3
+    ASTORE 2
    L2
-    LINENUMBER 170 L2
+    LINENUMBER 168 L2
+    ALOAD 2
+    IFNULL L3
+    GOTO L4
+   L3
    FRAME APPEND [TaskControlBlock]
+    ALOAD 2
+    GOTO L5
+   L4
+    LINENUMBER 170 L4
+   FRAME SAME
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL Scheduler.queueCount ()I
     ICONST_1
     IADD
     INVOKEVIRTUAL Scheduler.queueCount_$eq (I)V
-   L4
-    LINENUMBER 171 L4
+   L6
+    LINENUMBER 171 L6
     ALOAD 1
     ACONST_NULL
+    POP
+    ACONST_NULL
     INVOKEVIRTUAL Packet.link_$eq (LPacket;)V
-   L5
-    LINENUMBER 172 L5
+   L7
+    LINENUMBER 172 L7
     ALOAD 1
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentId ()I
     INVOKEVIRTUAL Packet.id_$eq (I)V
-   L6
-    LINENUMBER 173 L6
+   L8
+    LINENUMBER 173 L8
     ALOAD 2
     ALOAD 0
     INVOKEVIRTUAL Scheduler.currentTcb ()LTaskControlBlock;
     ALOAD 1
     INVOKEVIRTUAL TaskControlBlock.checkPriorityAdd (LTaskControlBlock;LPacket;)LTaskControlBlock;
-   L3
-    LINENUMBER 166 L3
+   L5
    FRAME SAME1 TaskControlBlock
     ARETURN
-   L7
-    LOCALVARIABLE this LScheduler; L0 L7 0
-    LOCALVARIABLE packet LPacket; L0 L7 1
-    LOCALVARIABLE t LTaskControlBlock; L1 L7 2
+   L9
+    LOCALVARIABLE t LTaskControlBlock; L1 L5 2
+    LOCALVARIABLE this LScheduler; L0 L9 0
+    LOCALVARIABLE packet LPacket; L0 L9 1
     MAXSTACK = 3
     MAXLOCALS = 3
 
@@ -543,6 +561,8 @@ public class Scheduler {
     LINENUMBER 78 L3
     ALOAD 0
     ACONST_NULL
+    POP
+    ACONST_NULL
     PUTFIELD Scheduler.currentTcb : LTaskControlBlock;
    L4
     LINENUMBER 79 L4
@@ -553,6 +573,8 @@ public class Scheduler {
     LINENUMBER 80 L5
     ALOAD 0
     ACONST_NULL
+    POP
+    ACONST_NULL
     PUTFIELD Scheduler.list : LTaskControlBlock;
    L6
     LINENUMBER 81 L6
@@ -560,9 +582,11 @@ public class Scheduler {
     BIPUSH 6
     ANEWARRAY TaskControlBlock
     PUTFIELD Scheduler.blocks : [LTaskControlBlock;
-    RETURN
    L7
-    LOCALVARIABLE this LScheduler; L0 L7 0
+    LINENUMBER 74 L7
+    RETURN
+   L8
+    LOCALVARIABLE this LScheduler; L0 L8 0
     MAXSTACK = 2
     MAXLOCALS = 1
 }

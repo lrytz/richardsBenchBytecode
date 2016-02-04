@@ -52,13 +52,17 @@ public final class WorkerTask$$anonfun$run$1 extends scala/runtime/AbstractFunct
     GETFIELD WorkerTask$$anonfun$run$1.$outer : LWorkerTask;
     INVOKEVIRTUAL WorkerTask.v2 ()I
     BIPUSH 26
-    IF_ICMPLE L2
+    IF_ICMPGT L2
+    GOTO L3
+   L2
+   FRAME SAME
     ALOAD 0
     GETFIELD WorkerTask$$anonfun$run$1.$outer : LWorkerTask;
     ICONST_1
     INVOKEVIRTUAL WorkerTask.v2_$eq (I)V
-   L2
-    LINENUMBER 345 L2
+    GOTO L3
+   L3
+    LINENUMBER 345 L3
    FRAME SAME
     ALOAD 0
     GETFIELD WorkerTask$$anonfun$run$1.packet$1 : LPacket;
@@ -69,9 +73,9 @@ public final class WorkerTask$$anonfun$run$1 extends scala/runtime/AbstractFunct
     INVOKEVIRTUAL WorkerTask.v2 ()I
     IASTORE
     RETURN
-   L3
-    LOCALVARIABLE this LWorkerTask$$anonfun$run$1; L0 L3 0
-    LOCALVARIABLE i I L0 L3 1
+   L4
+    LOCALVARIABLE this LWorkerTask$$anonfun$run$1; L0 L4 0
+    LOCALVARIABLE i I L0 L4 1
     MAXSTACK = 3
     MAXLOCALS = 2
 
@@ -96,10 +100,15 @@ public final class WorkerTask$$anonfun$run$1 extends scala/runtime/AbstractFunct
    L0
     LINENUMBER 342 L0
     ALOAD 1
-    IFNONNULL L1
+    IFNULL L1
+    GOTO L2
+   L1
+   FRAME SAME
+    ACONST_NULL
+    POP
     ACONST_NULL
     ATHROW
-   L1
+   L2
    FRAME SAME
     ALOAD 0
     ALOAD 1
@@ -110,10 +119,10 @@ public final class WorkerTask$$anonfun$run$1 extends scala/runtime/AbstractFunct
     ALOAD 0
     INVOKESPECIAL scala/runtime/AbstractFunction1$mcVI$sp.<init> ()V
     RETURN
-   L2
-    LOCALVARIABLE this LWorkerTask$$anonfun$run$1; L0 L2 0
-    LOCALVARIABLE $outer LWorkerTask; L0 L2 1
-    LOCALVARIABLE packet$1 LPacket; L0 L2 2
+   L3
+    LOCALVARIABLE this LWorkerTask$$anonfun$run$1; L0 L3 0
+    LOCALVARIABLE $outer LWorkerTask; L0 L3 1
+    LOCALVARIABLE packet$1 LPacket; L0 L3 2
     MAXSTACK = 2
     MAXLOCALS = 3
 }

@@ -47,56 +47,63 @@ public class DeviceTask extends Task  {
    L0
     LINENUMBER 307 L0
     ALOAD 1
-    IFNONNULL L1
-   L2
-    LINENUMBER 308 L2
+    IFNULL L1
+    GOTO L2
+   L1
+    LINENUMBER 308 L1
+   FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL DeviceTask.v1 ()LPacket;
-    IFNONNULL L3
-   L4
-    LINENUMBER 309 L4
+    IFNULL L3
+    GOTO L4
+   L3
+    LINENUMBER 309 L3
+   FRAME SAME
     ALOAD 0
     GETFIELD DeviceTask.scheduler : LScheduler;
     INVOKEVIRTUAL Scheduler.suspendCurrent ()LTaskControlBlock;
     GOTO L5
-   L3
-    LINENUMBER 311 L3
+   L4
+    LINENUMBER 311 L4
    FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL DeviceTask.v1 ()LPacket;
-    ASTORE 2
    L6
-    LINENUMBER 312 L6
+    ASTORE 2
+   L7
+    LINENUMBER 312 L7
     ALOAD 0
     ACONST_NULL
+    POP
+    ACONST_NULL
     INVOKEVIRTUAL DeviceTask.v1_$eq (LPacket;)V
-   L7
-    LINENUMBER 313 L7
+   L8
+    LINENUMBER 313 L8
     ALOAD 0
     GETFIELD DeviceTask.scheduler : LScheduler;
     ALOAD 2
     INVOKEVIRTUAL Scheduler.queue (LPacket;)LTaskControlBlock;
-   L8
-    GOTO L5
-   L1
-    LINENUMBER 316 L1
+   L5
+   FRAME SAME1 TaskControlBlock
+    GOTO L9
+   L2
+    LINENUMBER 316 L2
    FRAME SAME
     ALOAD 0
     ALOAD 1
     INVOKEVIRTUAL DeviceTask.v1_$eq (LPacket;)V
-   L9
-    LINENUMBER 317 L9
+   L10
+    LINENUMBER 317 L10
     ALOAD 0
     GETFIELD DeviceTask.scheduler : LScheduler;
     INVOKEVIRTUAL Scheduler.holdCurrent ()LTaskControlBlock;
-   L5
-    LINENUMBER 307 L5
+   L9
    FRAME SAME1 TaskControlBlock
     ARETURN
-   L10
-    LOCALVARIABLE this LDeviceTask; L0 L10 0
-    LOCALVARIABLE packet LPacket; L0 L10 1
-    LOCALVARIABLE v LPacket; L6 L8 2
+   L11
+    LOCALVARIABLE v LPacket; L6 L5 2
+    LOCALVARIABLE this LDeviceTask; L0 L11 0
+    LOCALVARIABLE packet LPacket; L0 L11 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -114,11 +121,15 @@ public class DeviceTask extends Task  {
     LINENUMBER 304 L1
     ALOAD 0
     ACONST_NULL
+    POP
+    ACONST_NULL
     PUTFIELD DeviceTask.v1 : LPacket;
-    RETURN
    L2
-    LOCALVARIABLE this LDeviceTask; L0 L2 0
-    LOCALVARIABLE scheduler LScheduler; L0 L2 1
+    LINENUMBER 302 L2
+    RETURN
+   L3
+    LOCALVARIABLE this LDeviceTask; L0 L3 0
+    LOCALVARIABLE scheduler LScheduler; L0 L3 1
     MAXSTACK = 2
     MAXLOCALS = 2
 }

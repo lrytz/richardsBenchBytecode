@@ -133,49 +133,55 @@ public class Packet {
     LINENUMBER 410 L0
     ALOAD 0
     ACONST_NULL
+    POP
+    ACONST_NULL
     INVOKEVIRTUAL Packet.link_$eq (LPacket;)V
    L1
     LINENUMBER 411 L1
     ALOAD 1
-    IFNONNULL L2
-   L3
-    LINENUMBER 412 L3
+    IFNULL L2
+    GOTO L3
+   L2
+    LINENUMBER 412 L2
+   FRAME SAME
     ALOAD 0
     GOTO L4
-   L2
-    LINENUMBER 414 L2
+   L3
+    LINENUMBER 414 L3
    FRAME SAME
     ALOAD 1
-    ASTORE 2
    L5
-    LINENUMBER 415 L5
+    ASTORE 2
+   L6
+    LINENUMBER 415 L6
    FRAME APPEND [Packet]
     ALOAD 2
     INVOKEVIRTUAL Packet.link ()LPacket;
-    IFNONNULL L6
+    IFNULL L7
+    GOTO L8
+   L8
+    LINENUMBER 416 L8
+   FRAME SAME
+    ALOAD 2
+    INVOKEVIRTUAL Packet.link ()LPacket;
+    ASTORE 2
+    GOTO L6
    L7
     LINENUMBER 417 L7
+   FRAME SAME
     ALOAD 2
     ALOAD 0
     INVOKEVIRTUAL Packet.link_$eq (LPacket;)V
-   L8
-    LINENUMBER 418 L8
+   L9
+    LINENUMBER 418 L9
     ALOAD 1
    L4
-    LINENUMBER 409 L4
    FRAME FULL [Packet Packet] [Packet]
     ARETURN
-   L6
-    LINENUMBER 416 L6
-   FRAME APPEND [Packet]
-    ALOAD 2
-    INVOKEVIRTUAL Packet.link ()LPacket;
-    ASTORE 2
-    GOTO L5
-   L9
-    LOCALVARIABLE this LPacket; L0 L9 0
-    LOCALVARIABLE queue LPacket; L0 L9 1
+   L10
     LOCALVARIABLE next LPacket; L5 L4 2
+    LOCALVARIABLE this LPacket; L0 L10 0
+    LOCALVARIABLE queue LPacket; L0 L10 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -207,12 +213,14 @@ public class Packet {
     ICONST_4
     NEWARRAY T_INT
     PUTFIELD Packet.a2 : [I
-    RETURN
    L4
-    LOCALVARIABLE this LPacket; L0 L4 0
-    LOCALVARIABLE link LPacket; L0 L4 1
-    LOCALVARIABLE id I L0 L4 2
-    LOCALVARIABLE kind I L0 L4 3
+    LINENUMBER 403 L4
+    RETURN
+   L5
+    LOCALVARIABLE this LPacket; L0 L5 0
+    LOCALVARIABLE link LPacket; L0 L5 1
+    LOCALVARIABLE id I L0 L5 2
+    LOCALVARIABLE kind I L0 L5 3
     MAXSTACK = 2
     MAXLOCALS = 4
 }

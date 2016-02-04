@@ -86,24 +86,28 @@ public class IdleTask extends Task  {
     ALOAD 0
     INVOKEVIRTUAL IdleTask.count ()I
     ICONST_0
-    IF_ICMPNE L2
-   L3
-    LINENUMBER 286 L3
+    IF_ICMPEQ L2
+    GOTO L3
+   L2
+    LINENUMBER 286 L2
+   FRAME SAME
     ALOAD 0
     GETFIELD IdleTask.scheduler : LScheduler;
     INVOKEVIRTUAL Scheduler.holdCurrent ()LTaskControlBlock;
     GOTO L4
-   L2
-    LINENUMBER 287 L2
+   L3
+    LINENUMBER 287 L3
    FRAME SAME
     ALOAD 0
     INVOKEVIRTUAL IdleTask.v1 ()I
     ICONST_1
     IAND
     ICONST_0
-    IF_ICMPNE L5
-   L6
-    LINENUMBER 288 L6
+    IF_ICMPEQ L5
+    GOTO L6
+   L5
+    LINENUMBER 288 L5
+   FRAME SAME
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL IdleTask.v1 ()I
@@ -117,8 +121,8 @@ public class IdleTask extends Task  {
     ICONST_4
     INVOKEVIRTUAL Scheduler.release (I)LTaskControlBlock;
     GOTO L4
-   L5
-    LINENUMBER 291 L5
+   L6
+    LINENUMBER 291 L6
    FRAME SAME
     ALOAD 0
     ALOAD 0
@@ -135,7 +139,6 @@ public class IdleTask extends Task  {
     ICONST_5
     INVOKEVIRTUAL Scheduler.release (I)LTaskControlBlock;
    L4
-    LINENUMBER 283 L4
    FRAME SAME1 TaskControlBlock
     ARETURN
    L9

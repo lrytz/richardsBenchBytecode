@@ -19,10 +19,12 @@ public abstract class Task {
     LINENUMBER 281 L0
     ALOAD 0
     INVOKESPECIAL java/lang/Object.<init> ()V
-    RETURN
    L1
-    LOCALVARIABLE this LTask; L0 L1 0
-    LOCALVARIABLE scheduler LScheduler; L0 L1 1
+    LINENUMBER 270 L1
+    RETURN
+   L2
+    LOCALVARIABLE this LTask; L0 L2 0
+    LOCALVARIABLE scheduler LScheduler; L0 L2 1
     MAXSTACK = 1
     MAXLOCALS = 2
 }

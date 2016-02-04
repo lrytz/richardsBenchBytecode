@@ -121,26 +121,32 @@ public class Richards {
     NEW Scheduler
     DUP
     INVOKESPECIAL Scheduler.<init> ()V
-    ASTORE 1
    L1
-    LINENUMBER 6 L1
+    ASTORE 1
+   L2
+    LINENUMBER 6 L2
     ALOAD 1
     ICONST_0
     ICONST_0
     ACONST_NULL
+    POP
+    ACONST_NULL
     SIPUSH 1000
     INVOKEVIRTUAL Scheduler.addIdleTask (IILPacket;I)V
-   L2
-    LINENUMBER 8 L2
+   L3
+    LINENUMBER 8 L3
     NEW Packet
     DUP
+    ACONST_NULL
+    POP
     ACONST_NULL
     ICONST_1
     ICONST_1
     INVOKESPECIAL Packet.<init> (LPacket;II)V
+   L4
     ASTORE 2
-   L3
-    LINENUMBER 9 L3
+   L5
+    LINENUMBER 9 L5
     NEW Packet
     DUP
     ALOAD 2
@@ -148,105 +154,113 @@ public class Richards {
     ICONST_1
     INVOKESPECIAL Packet.<init> (LPacket;II)V
     ASTORE 2
-   L4
-    LINENUMBER 10 L4
+   L6
+    LINENUMBER 10 L6
     ALOAD 1
     ICONST_1
     SIPUSH 1000
     ALOAD 2
     INVOKEVIRTUAL Scheduler.addWorkerTask (IILPacket;)V
-   L5
-    LINENUMBER 12 L5
+   L7
+    LINENUMBER 12 L7
     NEW Packet
     DUP
     ACONST_NULL
-    ICONST_4
-    ICONST_0
-    INVOKESPECIAL Packet.<init> (LPacket;II)V
-    ASTORE 2
-   L6
-    LINENUMBER 13 L6
-    NEW Packet
-    DUP
-    ALOAD 2
-    ICONST_4
-    ICONST_0
-    INVOKESPECIAL Packet.<init> (LPacket;II)V
-    ASTORE 2
-   L7
-    LINENUMBER 14 L7
-    NEW Packet
-    DUP
-    ALOAD 2
+    POP
+    ACONST_NULL
     ICONST_4
     ICONST_0
     INVOKESPECIAL Packet.<init> (LPacket;II)V
     ASTORE 2
    L8
-    LINENUMBER 15 L8
+    LINENUMBER 13 L8
+    NEW Packet
+    DUP
+    ALOAD 2
+    ICONST_4
+    ICONST_0
+    INVOKESPECIAL Packet.<init> (LPacket;II)V
+    ASTORE 2
+   L9
+    LINENUMBER 14 L9
+    NEW Packet
+    DUP
+    ALOAD 2
+    ICONST_4
+    ICONST_0
+    INVOKESPECIAL Packet.<init> (LPacket;II)V
+    ASTORE 2
+   L10
+    LINENUMBER 15 L10
     ALOAD 1
     ICONST_2
     SIPUSH 2000
     ALOAD 2
     INVOKEVIRTUAL Scheduler.addHandlerTask (IILPacket;)V
-   L9
-    LINENUMBER 17 L9
+   L11
+    LINENUMBER 17 L11
     NEW Packet
     DUP
     ACONST_NULL
-    ICONST_5
-    ICONST_0
-    INVOKESPECIAL Packet.<init> (LPacket;II)V
-    ASTORE 2
-   L10
-    LINENUMBER 18 L10
-    NEW Packet
-    DUP
-    ALOAD 2
-    ICONST_5
-    ICONST_0
-    INVOKESPECIAL Packet.<init> (LPacket;II)V
-    ASTORE 2
-   L11
-    LINENUMBER 19 L11
-    NEW Packet
-    DUP
-    ALOAD 2
+    POP
+    ACONST_NULL
     ICONST_5
     ICONST_0
     INVOKESPECIAL Packet.<init> (LPacket;II)V
     ASTORE 2
    L12
-    LINENUMBER 20 L12
+    LINENUMBER 18 L12
+    NEW Packet
+    DUP
+    ALOAD 2
+    ICONST_5
+    ICONST_0
+    INVOKESPECIAL Packet.<init> (LPacket;II)V
+    ASTORE 2
+   L13
+    LINENUMBER 19 L13
+    NEW Packet
+    DUP
+    ALOAD 2
+    ICONST_5
+    ICONST_0
+    INVOKESPECIAL Packet.<init> (LPacket;II)V
+    ASTORE 2
+   L14
+    LINENUMBER 20 L14
     ALOAD 1
     ICONST_3
     SIPUSH 3000
     ALOAD 2
     INVOKEVIRTUAL Scheduler.addHandlerTask (IILPacket;)V
-   L13
-    LINENUMBER 22 L13
+   L15
+    LINENUMBER 22 L15
     ALOAD 1
     ICONST_4
     SIPUSH 4000
     ACONST_NULL
+    POP
+    ACONST_NULL
     INVOKEVIRTUAL Scheduler.addDeviceTask (IILPacket;)V
-   L14
-    LINENUMBER 24 L14
+   L16
+    LINENUMBER 24 L16
     ALOAD 1
     ICONST_5
     SIPUSH 5000
     ACONST_NULL
+    POP
+    ACONST_NULL
     INVOKEVIRTUAL Scheduler.addDeviceTask (IILPacket;)V
-   L15
-    LINENUMBER 26 L15
+   L17
+    LINENUMBER 26 L17
     ALOAD 1
     INVOKEVIRTUAL Scheduler.schedule ()V
-   L16
+   L18
     RETURN
-   L17
-    LOCALVARIABLE this LRichards; L0 L17 0
-    LOCALVARIABLE scheduler LScheduler; L1 L16 1
-    LOCALVARIABLE queue LPacket; L3 L16 2
+   L19
+    LOCALVARIABLE scheduler LScheduler; L1 L18 1
+    LOCALVARIABLE queue LPacket; L4 L18 2
+    LOCALVARIABLE this LRichards; L0 L19 0
     MAXSTACK = 5
     MAXLOCALS = 3
 
@@ -256,9 +270,11 @@ public class Richards {
     LINENUMBER 43 L0
     ALOAD 0
     INVOKESPECIAL java/lang/Object.<init> ()V
-    RETURN
    L1
-    LOCALVARIABLE this LRichards; L0 L1 0
+    LINENUMBER 1 L1
+    RETURN
+   L2
+    LOCALVARIABLE this LRichards; L0 L2 0
     MAXSTACK = 1
     MAXLOCALS = 1
 }

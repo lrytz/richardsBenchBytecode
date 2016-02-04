@@ -119,9 +119,11 @@ public final class TaskState$ {
     ICONST_M1
     IXOR
     PUTFIELD TaskState$.NOT_HELD : I
-    RETURN
    L2
-    LOCALVARIABLE this LTaskState$; L0 L2 0
+    LINENUMBER 178 L2
+    RETURN
+   L3
+    LOCALVARIABLE this LTaskState$; L0 L3 0
     MAXSTACK = 3
     MAXLOCALS = 1
 }

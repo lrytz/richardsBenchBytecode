@@ -209,9 +209,11 @@ public final class Richards$ {
     INVOKESPECIAL java/lang/Object.<init> ()V
     ALOAD 0
     PUTSTATIC Richards$.MODULE$ : LRichards$;
-    RETURN
    L1
-    LOCALVARIABLE this LRichards$; L0 L1 0
+    LINENUMBER 43 L1
+    RETURN
+   L2
+    LOCALVARIABLE this LRichards$; L0 L2 0
     MAXSTACK = 1
     MAXLOCALS = 1
 }
